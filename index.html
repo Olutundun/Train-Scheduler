@@ -9,19 +9,21 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Kelly+Slab" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h3 id="title">PIZZA LAND TRAIN SCHEDULE</h3>
+                <h3 id="title">PIZZA-LAND TRAIN SCHEDULE</h3>
                 <p class="motto">Grab a slice of pizza for the ride!</p>
             </div>
         </div><br>
         <div class="container">
-            <table class="table">
+            <table id="train-table" class="table">
                 <thead class="thead-dark">
                     <span class="badge badge-pill badge-warning">CURRENT TRAIN SCHEDULE</span> <br> <br>
                     <tr>
@@ -32,100 +34,33 @@
                         <th scope="col">MINUTES AWAY</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Pepperoni</th>
-                        <td>Sweden</td>
-                        <td>25</td>
-                        <td>5:35PM</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Cheese</th>
-                        <td>Ireland</td>
-                        <td>3600</td>
-                        <td>1:39PM</td>
-                        <td>1154</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">BBQ Chicken</th>
-                        <td>Nigeria</td>
-                        <td>15</td>
-                        <td>5:35PM</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Veggie</th>
-                        <td>France</td>
-                        <td>45</td>
-                        <td>5:53PM</td>
-                        <td>28</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beef</th>
-                        <td>Singapore</td>
-                        <td>65</td>
-                        <td>5:50PM</td>
-                        <td>25</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Tuscan</th>
-                        <td>Ghana</td>
-                        <td>6000</td>
-                        <td>1:25AM</td>
-                        <td>4740</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Bombay</th>
-                        <td>Australia</td>
-                        <td>25</td>
-                        <td>5:28PM</td>
-                        <td>3</td>
-                    </tr>
-        </div>
-        </tbody>
-        </table>
-    </div> <br>
-    <form>
-        <div class="container">
-            <div class="form-group">
-                <span class="badge badge-pill badge-warning">ADD TRAIN</span> <br> <br>
-                <label class="head" for="exampleInputPassword1">TRAIN NAME</label>
-                <select class="custom-select">
-                    <option selected>Select Train Name...</option>
-                    <option value="1">Pepperoni</option>
-                    <option value="2">Cheese</option>
-                    <option value="3">BBQ Chicken</option>
-                    <option value="4">Veggie</option>
-                    <option value="5">Beef</option>
-                    <option value="6">Tuscan</option>
-                    <option value="7">Bombay</option>
-                </select> <br> <br>
+                <tbody></tbody>
+            </table>
+        </div> <br>
+        <form>
+            <div class="container">
                 <div class="form-group">
-                    <label class="head" for="exampleInputPassword1">DESTINATION</label>
-                    <select class="custom-select">
-                        <option selected>Select Destination...</option>
-                        <option value="1">Sweden</option>
-                        <option value="2">Ireland</option>
-                        <option value="3">Nigeria</option>
-                        <option value="4">France</option>
-                        <option value="5">Singapore</option>
-                        <option value="6">Ghana</option>
-                        <option value="7">Australia</option>
-                    </select> <br> <br>
+                    <span class="badge badge-pill badge-warning">ADD TRAIN</span> <br> <br>
+                    <label class="head">TRAIN NAME</label>
+                    <input type="text" id="train-name-input" placeholder="type train name..." class="form-control" />
+                    <div class="form-group"> <br>
+                        <label class="head">DESTINATION</label>
+                        <input type="text" id="destination-input" placeholder="type destination..." class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="head">FIRST TRAIN TIME(HH:mm - military time)</label>
+                        <input type="time" id="first-train-input" placeholder="00:00" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="head">Frequency(min)</label>
+                        <input type="number" id="frequency-input" placeholder="00" class="form-control" min="0" max="60"
+                            required />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="head" for="exampleInputPassword1">FIRST TRAIN TIME(HH:MM - military time)</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
-                </div>
-                <div class="form-group">
-                    <label class="head" for="exampleInputPassword1">Frequency(min)</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
-                </div>
-    </form>
-    <button type="submit" class="btn btn-danger">Submit</button>
-    </div>
-    <script src="assets/javascript/game.js"></script>
+            </div> <br>
+            <button id="add-train" type="submit" class="btn btn-danger">Submit</button>
+        </form>
+        <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

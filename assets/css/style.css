@@ -19,3 +19,9 @@
  .head {
      font-weight: bold;
  }
+
+ .card-body {
+     background: url(../images/train.jpg) repeat;
+     background-size: cover;
+
+ }
