@@ -70,7 +70,7 @@ function generateData() {
 
         var nextTrain = moment().add(arrivalMinutes, "minutes");
         var arrivalTime = moment(nextTrain).format("hh:mm");
-        
+
         $("#train-table > tbody").append(
             $("<tr>").append(
                 $("<td>").text(name),
